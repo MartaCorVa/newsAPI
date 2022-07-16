@@ -3,3 +3,8 @@
 ```
 npm run dev
 ```
+
+## Project setup
+```
+npm install
+```
