@@ -81,11 +81,16 @@ const getNumberOfArchivedNews = async ( req, res ) => {
  */
 const archiveNew = async ( req, res ) => {
     try {
+        const newDate = new Date()
+        let month = ( newDate.getMonth() + 1 )
+        if ( month < 10 ) month = `0${ month }`
+
+        const archiveDate = `${ newDate.getDate() }/${ month }/${ newDate.getFullYear() }`
         collection
             .updateOne( { _id: parseInt( req.params.id, 10 ) }, 
                         { 
                             $set: {
-                                archiveDate: new Date()
+                                archiveDate
                             } 
                         }
                     )
